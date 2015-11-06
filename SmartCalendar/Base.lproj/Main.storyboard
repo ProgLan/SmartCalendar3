@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Ph-ht-HT9">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Display-->
+        <scene sceneID="T5u-mo-8bh">
+            <objects>
+                <viewController id="MdJ-DE-VAG" customClass="SCTaskDisplayContentViewController" customModule="SmartCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NMU-Kh-hoo"/>
+                        <viewControllerLayoutGuide type="bottom" id="T20-JV-XNY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UkD-Jq-eTp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="629-pu-DrD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Delet"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="152" y="531" width="37" height="30"/>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="629-pu-DrD"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="629-pu-DrD"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Display" id="GoT-YF-18l">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="fD6-q5-ldW">
+                            <connections>
+                                <segue destination="xG2-iH-K92" kind="show" id="DaO-kU-UAd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3N-yA-zEI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4132.5" y="492"/>
+        </scene>
+        <!--Distribute-->
+        <scene sceneID="85i-OF-EJg">
+            <objects>
+                <viewController id="zmt-dE-f2B" customClass="SCCalendarModelContentViewController" customModule="SmartCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mLE-HO-4ss"/>
+                        <viewControllerLayoutGuide type="bottom" id="8iq-gx-IOB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ohf-4x-2xJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Distribution" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apB-5E-XJ4">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="84" y="133" width="129" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="apB-5E-XJ4"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="apB-5E-XJ4"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Distribute" id="8UL-3Z-oHv">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="cke-97-v5C">
+                            <connections>
+                                <action selector="backToRootView:" destination="zmt-dE-f2B" id="ogA-MB-mfA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backToRootView" destination="cke-97-v5C" id="OtZ-AM-CSu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y5d-Uy-ToN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5551.5" y="-439"/>
+        </scene>
+        <!--Calendar Appearance Delegate-->
+        <scene sceneID="EBK-Us-bVO">
+            <objects>
+                <viewController id="aGz-sW-LKR" userLabel="Calendar Appearance Delegate" customClass="ViewController" customModule="SmartCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a3b-6O-dFh"/>
+                        <viewControllerLayoutGuide type="bottom" id="4C7-U7-2lt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uYI-ly-CZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January, 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D8-6G-ZZG" userLabel="Month Label">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="145" y="76" width="138" height="21"/>
+                                </variation>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHu-1G-Gy4" userLabel="Calendar View" customClass="SCCalendarView" customModule="SmartCalendar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="33" y="177" width="327" height="199"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="calendarAppearanceDelegate" destination="aGz-sW-LKR" id="K8y-ht-OV5"/>
+                                    <outlet property="calendarDelegate" destination="aGz-sW-LKR" id="RUt-QP-eaC"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4B-97-UDy">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Week"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="25" y="72" width="39" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="toWeekView:" destination="aGz-sW-LKR" eventType="touchUpInside" id="U23-Zt-LdC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-oy-hie">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Month"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="79" y="72" width="44" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="toMonthView:" destination="aGz-sW-LKR" eventType="touchUpInside" id="hp0-Ua-QJm"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pdm-3j-oO7" userLabel="Menu View" customClass="SCCalendarMenuView" customModule="SmartCalendar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="33" y="119" width="327" height="30"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="menuViewDelegate" destination="aGz-sW-LKR" id="pX0-5w-68m"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmC-NJ-4H6">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button" image="Image"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="318" y="72" width="42" height="33"/>
+                                </variation>
+                                <connections>
+                                    <action selector="todayMonthView" destination="aGz-sW-LKR" eventType="touchUpInside" id="fc8-yK-478"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DQ-Ep-QYD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="test"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="151" y="550" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="MdJ-DE-VAG" kind="show" id="gC7-ao-CKR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="0D8-6G-ZZG"/>
+                                <exclude reference="hHu-1G-Gy4"/>
+                                <exclude reference="k4B-97-UDy"/>
+                                <exclude reference="jY2-oy-hie"/>
+                                <exclude reference="Pdm-3j-oO7"/>
+                                <exclude reference="DmC-NJ-4H6"/>
+                                <exclude reference="7DQ-Ep-QYD"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="0D8-6G-ZZG"/>
+                                <include reference="hHu-1G-Gy4"/>
+                                <include reference="k4B-97-UDy"/>
+                                <include reference="jY2-oy-hie"/>
+                                <include reference="Pdm-3j-oO7"/>
+                                <include reference="DmC-NJ-4H6"/>
+                                <include reference="7DQ-Ep-QYD"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="sVg-uJ-Ejq">
+                        <barButtonItem key="rightBarButtonItem" title="Add Event" id="kn7-i1-Jbi">
+                            <connections>
+                                <action selector="goToTaskEditView:" destination="aGz-sW-LKR" id="wpZ-5O-byZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addEventBtn" destination="kn7-i1-Jbi" id="jX9-TE-zvX"/>
+                        <outlet property="calendarView" destination="hHu-1G-Gy4" id="vip-hi-rn3"/>
+                        <outlet property="menuView" destination="Pdm-3j-oO7" id="tvB-3p-o5h"/>
+                        <outlet property="monthLabel" destination="0D8-6G-ZZG" id="MFG-ra-Jn3"/>
+                        <segue destination="xG2-iH-K92" kind="show" identifier="goToTaskEditViewSegue" id="26a-SG-K4t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h9k-LC-N9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3915" y="-439"/>
+        </scene>
+        <!--Add Event-->
+        <scene sceneID="gbC-0g-kUa">
+            <objects>
+                <viewController id="xG2-iH-K92" customClass="SCTaskEditContentViewController" customModule="SmartCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lkx-DZ-nXs"/>
+                        <viewControllerLayoutGuide type="bottom" id="t0O-Ht-2DJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HR5-79-paP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Event" id="ddG-c6-1PX">
+                        <barButtonItem key="rightBarButtonItem" title="Distribute" id="JXr-FM-xht">
+                            <connections>
+                                <action selector="goToModelView:" destination="xG2-iH-K92" id="9Id-nd-GHT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goToModelBtn" destination="JXr-FM-xht" id="h2b-bL-uP1"/>
+                        <segue destination="zmt-dE-f2B" kind="show" identifier="goToModelViewSegue" id="i6g-ov-k3j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="neI-kh-eyM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4702.5" y="-441"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="egb-wU-Ybg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Ph-ht-HT9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VVV-6A-ybh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aGz-sW-LKR" kind="relationship" relationship="rootViewController" id="a55-UZ-VqI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QDD-pt-YbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2997" y="-439"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Image" width="33" height="33"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DaO-kU-UAd"/>
+    </inferredMetricsTieBreakers>
+</document>
