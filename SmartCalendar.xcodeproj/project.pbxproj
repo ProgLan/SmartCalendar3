@@ -12,6 +12,9 @@
 		B07139E11BEC52C2000A5817 /* SCTaskDisplayContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07139E01BEC52C2000A5817 /* SCTaskDisplayContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B07139E31BEC52F7000A5817 /* SCTaskEditContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07139E21BEC52F7000A5817 /* SCTaskEditContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B07D20AF1BED38CE004DFADE /* SCCalendarGraphDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07D20AE1BED38CE004DFADE /* SCCalendarGraphDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		B07D20B11BED5C1F004DFADE /* SCAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07D20B01BED5C1F004DFADE /* SCAddEventViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		B07D20B31BED5F10004DFADE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07D20B21BED5F10004DFADE /* Utils.swift */; settings = {ASSET_TAGS = (); }; };
+		B07D20B51BED6166004DFADE /* SCAddEventRowCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07D20B41BED6166004DFADE /* SCAddEventRowCellController.swift */; settings = {ASSET_TAGS = (); }; };
 		B0FDD4A91BE86B8600AA5171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDD4A81BE86B8600AA5171 /* AppDelegate.swift */; };
 		B0FDD4AB1BE86B8600AA5171 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDD4AA1BE86B8600AA5171 /* ViewController.swift */; };
 		B0FDD4AE1BE86B8600AA5171 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FDD4AC1BE86B8600AA5171 /* Main.storyboard */; };
@@ -75,6 +78,9 @@
 		B07139E01BEC52C2000A5817 /* SCTaskDisplayContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCTaskDisplayContentViewController.swift; path = SmartCalendarDemo/ContentController/SCTaskDisplayContentViewController.swift; sourceTree = "<group>"; };
 		B07139E21BEC52F7000A5817 /* SCTaskEditContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCTaskEditContentViewController.swift; path = SmartCalendarDemo/ContentController/SCTaskEditContentViewController.swift; sourceTree = "<group>"; };
 		B07D20AE1BED38CE004DFADE /* SCCalendarGraphDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCCalendarGraphDelegate.swift; path = SmartCalendarDemo/Delegates/SCCalendarGraphDelegate.swift; sourceTree = "<group>"; };
+		B07D20B01BED5C1F004DFADE /* SCAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCAddEventViewController.swift; path = SmartCalendarDemo/ContentController/SCAddEventViewController.swift; sourceTree = "<group>"; };
+		B07D20B21BED5F10004DFADE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = SmartCalendarDemo/Models/Utils.swift; sourceTree = "<group>"; };
+		B07D20B41BED6166004DFADE /* SCAddEventRowCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCAddEventRowCellController.swift; path = SmartCalendarDemo/ContentController/SCAddEventRowCellController.swift; sourceTree = "<group>"; };
 		B0FDD4A51BE86B8600AA5171 /* SmartCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FDD4A81BE86B8600AA5171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FDD4AA1BE86B8600AA5171 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +229,8 @@
 				B07139DE1BEC5282000A5817 /* SCTaskContentViewController.swift */,
 				B07139E01BEC52C2000A5817 /* SCTaskDisplayContentViewController.swift */,
 				B07139E21BEC52F7000A5817 /* SCTaskEditContentViewController.swift */,
+				B07D20B01BED5C1F004DFADE /* SCAddEventViewController.swift */,
+				B07D20B41BED6166004DFADE /* SCAddEventRowCellController.swift */,
 			);
 			name = "Content Controller";
 			sourceTree = "<group>";
@@ -268,6 +276,7 @@
 				B0FDD5281BEAEB4900AA5171 /* SCCalendarManager.swift */,
 				B0FDD52A1BEAEB7600AA5171 /* SCDate.swift */,
 				B0FDD52C1BEAEBB200AA5171 /* SCSet.swift */,
+				B07D20B21BED5F10004DFADE /* Utils.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -429,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0FDD5231BEAE98B00AA5171 /* SCCalendarTouchController.swift in Sources */,
+				B07D20B11BED5C1F004DFADE /* SCAddEventViewController.swift in Sources */,
 				B0FDD5331BEAEC7400AA5171 /* SCCalendarViewAnimatorDelegate.swift in Sources */,
 				B0FDD52B1BEAEB7600AA5171 /* SCDate.swift in Sources */,
 				B0FDD5251BEAEA0900AA5171 /* SCCalendarDayViewControlCoordinator.swift in Sources */,
@@ -442,6 +452,7 @@
 				B0FDD4FB1BEAE24300AA5171 /* SCCalendarView.swift in Sources */,
 				B0FDD4EF1BEADF8900AA5171 /* SCShape.swift in Sources */,
 				B0FDD4ED1BEADF6700AA5171 /* SCRange.swift in Sources */,
+				B07D20B31BED5F10004DFADE /* Utils.swift in Sources */,
 				B07139E31BEC52F7000A5817 /* SCTaskEditContentViewController.swift in Sources */,
 				B0FDD4F11BEADFB000AA5171 /* SCSelectionType.swift in Sources */,
 				B0FDD5091BEAE52500AA5171 /* SCCalendarTaskEditView.swift in Sources */,
@@ -464,6 +475,7 @@
 				B0FDD52D1BEAEBB200AA5171 /* SCSet.swift in Sources */,
 				B0FDD5311BEAEC3900AA5171 /* SCCalendarMenuViewDelegate.swift in Sources */,
 				B07D20AF1BED38CE004DFADE /* SCCalendarGraphDelegate.swift in Sources */,
+				B07D20B51BED6166004DFADE /* SCAddEventRowCellController.swift in Sources */,
 				B0FDD5291BEAEB4900AA5171 /* SCCalendarManager.swift in Sources */,
 				B0FDD4FD1BEAE25700AA5171 /* SCCalendarMenuView.swift in Sources */,
 			);
