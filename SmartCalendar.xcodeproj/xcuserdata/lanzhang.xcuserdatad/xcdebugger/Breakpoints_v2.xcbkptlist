@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCalendarDemo/MainView/SCCalendarView.swift"
-            timestampString = "468384202.510688"
+            timestampString = "468532623.772786"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "changeMode(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,12 +58,42 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCalendarDemo/ContentController/SCCalendarModelContentViewController.swift"
-            timestampString = "468530387.303633"
+            timestampString = "468532913.692217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "toggleMonthViewWithMonthOffset(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartCalendarDemo/MainView/SCCalendarView.swift"
+            timestampString = "468532168.892126"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartCalendarDemo/ContentController/SCCalendarModelContentViewController.swift"
+            timestampString = "468533256.405471"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "printHelloWorld()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

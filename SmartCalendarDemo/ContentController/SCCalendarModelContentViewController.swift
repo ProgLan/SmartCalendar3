@@ -44,6 +44,9 @@ public final class SCCalendarModelContentViewController: UIViewController {
     @IBAction func backToRootView(sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    
+    
 }
     
 
@@ -61,7 +64,6 @@ extension SCCalendarModelContentViewController: SCCalendarViewDelegate, SCCalend
         return .Sunday
     }
     
-    
     // MARK: Optional methods
     
     public func shouldShowWeekdaysOut() -> Bool {
@@ -70,6 +72,10 @@ extension SCCalendarModelContentViewController: SCCalendarViewDelegate, SCCalend
     
     public func shouldAnimateResizing() -> Bool {
         return true // Default value is true
+    }
+    
+    func printHelloWorld(){
+        print("hello world\n")
     }
     
     public func didSelectDayView(dayView: SCCalendarDayView, animationDidFinish: Bool) {
@@ -250,3 +256,10 @@ extension SCCalendarModelContentViewController {
     
 }
 
+
+//MARK: -Calendar Graph
+
+extension SCCalendarModelContentViewController {
+
+
+}

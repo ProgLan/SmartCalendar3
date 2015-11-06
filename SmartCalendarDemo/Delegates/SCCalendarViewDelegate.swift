@@ -12,6 +12,8 @@ import UIKit
 public protocol SCCalendarViewDelegate {
     func presentationMode() -> CalendarMode
     func firstWeekday() -> Weekday
+    //optional func printHelloWorld()
+
     
     /**
     Determines whether resizing should cause related views' animation.
@@ -39,4 +41,6 @@ public protocol SCCalendarViewDelegate {
     
     optional func didShowNextMonthView(date: NSDate)
     optional func didShowPreviousMonthView(date: NSDate)
+    
+    
 }

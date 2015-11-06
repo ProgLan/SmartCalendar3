@@ -14,6 +14,8 @@ public typealias Manager = SCCalendarManager
 public typealias DayView = SCCalendarDayView
 public typealias ContentController = SCCalendarContentViewController
 public typealias Appearance = SCCalendarViewAppearance
+//TODO
+public typealias Graph = SCCalendarGraphDelegate
 public typealias Coordinator = SCCalendarDayViewControlCoordinator
 public typealias Date = SCDate
 public typealias CalendarMode = SCCalendarViewPresentationMode
@@ -22,6 +24,7 @@ public typealias Animator = SCCalendarViewAnimator
 public typealias Delegate = SCCalendarViewDelegate
 public typealias AppearanceDelegate = SCCalendarViewAppearanceDelegate
 public typealias AnimatorDelegate = SCCalendarViewAnimatorDelegate
+public typealias GraphDelegate = SCCalendarGraphDelegate
 public typealias ContentViewController = SCCalendarContentViewController
 public typealias MonthContentViewController = SCCalendarMonthContentViewController
 public typealias WeekContentViewController = SCCalendarWeekContentViewController
@@ -33,6 +36,7 @@ public final class SCCalendarView: UIView {
     // MARK: - Public properties
     public var manager: Manager!
     public var appearance: Appearance!
+    public var graph: Graph!
     public var touchController: TouchController!
     public var coordinator: Coordinator!
     public var animator: Animator!
@@ -180,6 +184,24 @@ public final class SCCalendarView: UIView {
         }
     }
     
+    // MARK: - Calendar Graph Delegate
+    
+//    @IBOutlet public weak var graphDelegate: AnyObject? {
+//        set {
+//            if let animatorDelegate = newValue as? GraphDelegate {
+//                animator.delegate = animatorDelegate
+//            }
+//        }
+//        
+//        get {
+//            return animator
+//        }
+//    }
+
+    
+    
+    
+    
     // MARK: - Initialization
     
     public init() {
@@ -197,6 +219,10 @@ public final class SCCalendarView: UIView {
         super.init(coder: aDecoder)
         hidden = true
     }
+    
+    
+    
+    
 }
 
 // MARK: - Frames update
