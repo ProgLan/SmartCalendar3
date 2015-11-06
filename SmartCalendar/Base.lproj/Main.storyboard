@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="4132.5" y="492"/>
         </scene>
-        <!--Distribute-->
+        <!--Calendar Appearance Delegate-->
         <scene sceneID="85i-OF-EJg">
             <objects>
                 <viewController id="zmt-dE-f2B" customClass="SCCalendarModelContentViewController" customModule="SmartCalendar" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,25 +60,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Distribution" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apB-5E-XJ4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53I-MZ-1Lq" userLabel="Month Label">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="133" width="129" height="21"/>
+                                    <rect key="frame" x="145" y="76" width="138" height="21"/>
                                 </variation>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOb-6p-bDL" userLabel="Menu View" customClass="SCCalendarMenuView" customModule="SmartCalendar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="33" y="119" width="327" height="30"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="menuViewDelegate" destination="zmt-dE-f2B" id="ccT-BW-d2x"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwJ-6I-jgj" userLabel="Calendar View" customClass="SCCalendarView" customModule="SmartCalendar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="33" y="177" width="327" height="199"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="calendarAppearanceDelegate" destination="zmt-dE-f2B" id="VSz-ug-QvN"/>
+                                    <outlet property="calendarDelegate" destination="zmt-dE-f2B" id="NOE-H7-G7N"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="apB-5E-XJ4"/>
+                                <exclude reference="53I-MZ-1Lq"/>
+                                <exclude reference="ZOb-6p-bDL"/>
+                                <exclude reference="OwJ-6I-jgj"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="apB-5E-XJ4"/>
+                                <include reference="53I-MZ-1Lq"/>
+                                <include reference="ZOb-6p-bDL"/>
+                                <include reference="OwJ-6I-jgj"/>
                             </mask>
                         </variation>
                     </view>
@@ -91,6 +116,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backToRootView" destination="cke-97-v5C" id="OtZ-AM-CSu"/>
+                        <outlet property="calendarView" destination="OwJ-6I-jgj" id="6Pt-BM-hCa"/>
+                        <outlet property="menuView" destination="ZOb-6p-bDL" id="6Sn-Yl-4He"/>
+                        <outlet property="monthLabel" destination="53I-MZ-1Lq" id="7yu-9j-IQH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y5d-Uy-ToN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -275,6 +303,6 @@
         <image name="Image" width="33" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DaO-kU-UAd"/>
+        <segue reference="26a-SG-K4t"/>
     </inferredMetricsTieBreakers>
 </document>
