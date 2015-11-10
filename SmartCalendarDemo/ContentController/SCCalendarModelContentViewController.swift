@@ -21,7 +21,7 @@ public final class SCCalendarModelContentViewController: UIViewController {
     var shouldShowDaysOut = true
     var animationFinished = true
     
-    var vc : ViewController! = ViewController()
+    
     
     
     

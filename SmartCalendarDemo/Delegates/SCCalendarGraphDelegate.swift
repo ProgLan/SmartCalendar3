@@ -10,7 +10,10 @@ import UIKit
 
 @objc
 public protocol SCCalendarGraphDelegate {
-
+    //render original graph
+    
+    
+    //render new graph
 
 
 }

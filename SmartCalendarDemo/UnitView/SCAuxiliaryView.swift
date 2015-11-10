@@ -51,6 +51,30 @@ public final class SCAuxiliaryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //TODO, pass in rect height
+//    public override func drawRect(rect: CGRect, workLoad: CGFloat) {
+//        var path: UIBezierPath!
+//        
+//        if let shape = shape {
+//            switch shape {
+//            case .RightFlag: path = rightFlagPath()
+//            case .LeftFlag: path = leftFlagPath()
+//            case .Circle: path = circlePath()
+//            case .Rect: path = rectPath(workLoad)
+//            }
+//        }
+//        
+//        strokeColor.setStroke()
+//        fillColor.setFill()
+//        
+//        if let path = path {
+//            path.lineWidth = 1
+//            path.stroke()
+//            path.fill()
+//        }
+//    }
+    
+    //TODO, pass in rect height
     public override func drawRect(rect: CGRect) {
         var path: UIBezierPath!
         
@@ -72,6 +96,7 @@ public final class SCAuxiliaryView: UIView {
             path.fill()
         }
     }
+
     
     deinit {
         //println("[CVCalendar Recovery]: AuxiliaryView is deinited.")
@@ -129,6 +154,7 @@ extension SCAuxiliaryView {
         return UIBezierPath(CGPath: path)
     }
     
+    //TODO, add parameter when draw rectPath
     func rectPath() -> UIBezierPath {
         //        let midX = bounds.width / 2
         let midY = bounds.height / 2
@@ -142,4 +168,20 @@ extension SCAuxiliaryView {
         
         return path
     }
+
+    
+//    //TODO, add parameter when draw rectPath
+//    func rectPath(workLoad: CGFloat) -> UIBezierPath {
+//        //        let midX = bounds.width / 2
+//        let midY = bounds.height / 2
+//        
+//        let appearance = dayView.calendarView.appearance
+//        let offset = appearance.spaceBetweenDayViews!
+//        
+//        print("offset = \(offset)")
+//        
+//        let path = UIBezierPath(rect: CGRectMake(0 - offset, midY - radius, bounds.width + offset / 2, radius * 2))
+//        
+//        return path
+//    }
 }

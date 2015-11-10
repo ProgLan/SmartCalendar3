@@ -23,7 +23,7 @@ public class SCAddEventViewController: UIViewController{
     
     
     override public func viewDidAppear(animated: Bool) {
-        <#code#>
+
     }
     
     
@@ -71,7 +71,7 @@ public class SCAddEventViewController: UIViewController{
     
     
     override public func didReceiveMemoryWarning() {
-        <#code#>
+    
     }
     
     func populateSelectedDates(){
@@ -102,6 +102,8 @@ public class SCAddEventViewController: UIViewController{
     func normalize(){
         
     }
+    
+    
     
     
     

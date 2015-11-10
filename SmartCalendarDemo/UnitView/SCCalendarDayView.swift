@@ -247,13 +247,17 @@ extension SCCalendarDayView {
         }
         
         if let delegate = calendarView.delegate {
-            if let shouldShow = delegate.dotMarker?(shouldShowOnDayView: self) where shouldShow {
+            //display rect in all dates
+            //if let shouldShow = delegate.dotMarker?(shouldShowOnDayView: self) where shouldShow {
                 
                 var (width, height): (CGFloat, CGFloat) = (13, 13)
                 if let size = delegate.dotMarker?(sizeOnDayView: self) {
                     (width, height) = (size,size)
                 }
+                //TODO: change all colors into grey
+                //let colors = isOut ? [.grayColor()] : delegate.dotMarker?(colorOnDayView: self)
                 let colors = isOut ? [.grayColor()] : delegate.dotMarker?(colorOnDayView: self)
+            
                 var yOffset = bounds.height / 5
                 if let y = delegate.dotMarker?(moveOffsetOnDayView: self) {
                     yOffset = y
@@ -264,7 +268,8 @@ extension SCCalendarDayView {
                 if (colors!.count > 3) {
                     assert(false, "Only 3 dot markers allowed per day")
                 }
-                
+            
+            
                 for (index, color) in (colors!).enumerate() {
                     var x: CGFloat = 0
                     switch(colors!.count) {
@@ -278,7 +283,9 @@ extension SCCalendarDayView {
                         break
                     }
                     
-                    let dotMarker = SCAuxiliaryView(dayView: self, rect: markerFrame, shape: .Circle)
+                    let dotMarker = SCAuxiliaryView(dayView: self, rect: markerFrame,
+                        //TODO, change from circle to Rect
+                        shape: .Rect)
                     dotMarker.fillColor = color
                     dotMarker.center = CGPointMake(x, y)
                     insertSubview(dotMarker, atIndex: 0)
@@ -292,7 +299,7 @@ extension SCCalendarDayView {
                     moveDotMarkerBack(false, coloring: false)
                 }
             }
-        }
+        //}
     }
 }
 

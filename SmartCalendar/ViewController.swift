@@ -127,20 +127,20 @@ extension ViewController: SCCalendarViewDelegate, SCCalendarMenuViewDelegate {
     
     func dotMarker(colorOnDayView dayView: SCCalendarDayView) -> [UIColor] {
         
-        let red = CGFloat(arc4random_uniform(600) / 255)
-        let green = CGFloat(arc4random_uniform(600) / 255)
-        let blue = CGFloat(arc4random_uniform(600) / 255)
+        let red = CGFloat(255)
+        let green = CGFloat(0)
+        let blue = CGFloat(0)
         
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
         
-        let numberOfDots = Int(arc4random_uniform(3) + 1)
+        let numberOfDots = 1
         switch(numberOfDots) {
-        case 2:
-            return [color, color]
-        case 3:
-            return [color, color, color]
+//        case 2:
+//            return [color, color,color]
+//        case 3:
+//            return [color, color, color]
         default:
-            return [color] // return 1 dot
+            return [color, color, color] // return 1 dot
         }
     }
     
