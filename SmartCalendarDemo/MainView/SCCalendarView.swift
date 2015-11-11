@@ -14,10 +14,6 @@ public typealias Manager = SCCalendarManager
 public typealias DayView = SCCalendarDayView
 public typealias ContentController = SCCalendarContentViewController
 public typealias Appearance = SCCalendarViewAppearance
-//TODO
-public typealias Graph = SCCalendarViewGraph
-public typealias GraphDelegate = SCCalendarGraphDelegate
-
 public typealias Coordinator = SCCalendarDayViewControlCoordinator
 public typealias Date = SCDate
 public typealias CalendarMode = SCCalendarViewPresentationMode
@@ -37,7 +33,6 @@ public final class SCCalendarView: UIView {
     // MARK: - Public properties
     public var manager: Manager!
     public var appearance: Appearance!
-    public var graph: Graph!
     public var touchController: TouchController!
     public var coordinator: Coordinator!
     public var animator: Animator!
@@ -188,17 +183,17 @@ public final class SCCalendarView: UIView {
     
      //MARK: - Calendar Graph Delegate
     
-    @IBOutlet public weak var graphDelegate: AnyObject? {
-        set {
-            if let graphDelegate = newValue as? GraphDelegate {
-                graph.delegate = graphDelegate
-            }
-        }
-        
-        get {
-            return graph
-        }
-    }
+//    @IBOutlet public weak var graphDelegate: AnyObject? {
+//        set {
+//            if let graphDelegate = newValue as? GraphDelegate {
+//                graph.delegate = graphDelegate
+//            }
+//        }
+//        
+//        get {
+//            return graph
+//        }
+//    }
 
     
     

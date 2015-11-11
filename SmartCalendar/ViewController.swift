@@ -14,31 +14,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var calendarView: SCCalendarView!
     @IBOutlet weak var menuView: SCCalendarMenuView!
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var daysOutSwitch: UISwitch!
     @IBOutlet weak var addEventBtn: UIBarButtonItem!
-    
+	@IBOutlet weak var tableView: UITableView!
+	
     var shouldShowDaysOut = true
     var animationFinished = true
+	
+	var selectedDay: DayView!
+	
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
         monthLabel.text = SCDate(date: NSDate()).globalDescription
+		//tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+		
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
     }
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+		if (segue.identifier == "goToTaskEditViewSegue") {
+			let addEventViewController = segue.destinationViewController as! SCTaskEditContentViewController
+			addEventViewController.selectedDay = self.selectedDay
+		}
+	}
     
     @IBAction func goToTaskEditView(sender: AnyObject) {
         self.performSegueWithIdentifier("goToTaskEditViewSegue", sender: self)
     }
-    
+	
+	
+	
 }
 
 
@@ -71,6 +84,7 @@ extension ViewController: SCCalendarViewDelegate, SCCalendarMenuViewDelegate {
     
     func didSelectDayView(dayView: SCCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
+		selectedDay = dayView
     }
     
     func presentedDateUpdated(date: SCDate) {

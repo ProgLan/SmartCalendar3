@@ -71,7 +71,7 @@ public class SCAddEventViewController: UIViewController{
     
     
     override public func didReceiveMemoryWarning() {
-    
+
     }
     
     func populateSelectedDates(){

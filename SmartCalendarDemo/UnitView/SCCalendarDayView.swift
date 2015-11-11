@@ -22,6 +22,8 @@ public final class SCCalendarDayView: UIView {
     
     public var isOut = false
     public var isCurrentDay = false
+	
+	public var eventList = [AnyObject]()
     
     //TODO workload = Sum(time of all events in this day view's event list)
     public var workLoad:CGFloat!

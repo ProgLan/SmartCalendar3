@@ -12,7 +12,6 @@ import UIKit
 public protocol SCCalendarViewDelegate {
     func presentationMode() -> CalendarMode
     func firstWeekday() -> Weekday
-    //optional func printHelloWorld()
 
     
     /**
