@@ -85,6 +85,7 @@ extension ViewController: SCCalendarViewDelegate, SCCalendarMenuViewDelegate {
     func didSelectDayView(dayView: SCCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
 		selectedDay = dayView
+		print(dayView.eventList.count)
     }
     
     func presentedDateUpdated(date: SCDate) {

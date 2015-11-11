@@ -13,7 +13,6 @@ public class SCTaskEditContentViewController: UIViewController{
     
     
 	@IBOutlet weak var eventTitle: UITextField!
-	@IBOutlet weak var eventLocation: UITextField!
 	@IBOutlet weak var goToModelBtn: UIBarButtonItem!
 	
 	var selectedDay: DayView!
