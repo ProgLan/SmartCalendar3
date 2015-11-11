@@ -63,9 +63,9 @@ public final class SCCalendarModelContentViewController: UIViewController{
         let modelVW: CGRect = self.modelView.frame
         let rec: CGRect = (recognizer.view?.frame)!
         
-        if((location.x < 0 || (location.x > modelVW.size.width) || (location.y > modelVW.origin.y) || (location.y < 0)))
+        if((location.x > 0 && (location.x < modelVW.size.width) && (location.y < modelVW.size.height) && (location.y > 0)))
         {
-            
+            modelView.drawCircle(panRecognizer.locationInView(panRecognizer.view))
             
             print("lcoaiton x : ", location.x)
             print("location y : ", location.y)
@@ -79,7 +79,7 @@ public final class SCCalendarModelContentViewController: UIViewController{
 //            recognizer.view?.center = CGPointMake(recognizer.view!.center.x + translation.x, recognizer.view!.center.y + translation.y)
 //            recognizer.setTranslation(CGPointZero, inView: recognizer.view?.superview)
         }
-        modelView.drawCircle(panRecognizer.locationInView(panRecognizer.view))
+        
     
     }
     
