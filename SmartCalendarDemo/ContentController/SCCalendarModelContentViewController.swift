@@ -56,10 +56,29 @@ public final class SCCalendarModelContentViewController: UIViewController{
     
     @IBAction func displayGestureForPanRecognizer(recognizer:UIPanGestureRecognizer) {
         
-        let location: CGPoint = recognizer.locationInView(recognizer.view)
+        var location: CGPoint = recognizer.locationInView(recognizer.view)
         //print(location.x + location.y)
         self.drawWorkLoadGraph(location, recognizerState: recognizer.state)
         
+        let modelVW: CGRect = self.modelView.frame
+        let rec: CGRect = (recognizer.view?.frame)!
+        
+        if((location.x < 0 || (location.x > modelVW.size.width) || (location.y > modelVW.origin.y) || (location.y < 0)))
+        {
+            
+            
+            print("lcoaiton x : ", location.x)
+            print("location y : ", location.y)
+            print("modelView x : ", modelVW.origin.x)
+            print("modelView y : ", modelVW.origin.y)
+            print("modelView size heigh : ", modelVW.size.height)
+            print("modelView size width : ", modelVW.size.width)
+            print("outside")
+//            let translation : CGPoint = recognizer.translationInView(recognizer.view?.superview)
+//            location = translation
+//            recognizer.view?.center = CGPointMake(recognizer.view!.center.x + translation.x, recognizer.view!.center.y + translation.y)
+//            recognizer.setTranslation(CGPointZero, inView: recognizer.view?.superview)
+        }
         modelView.drawCircle(panRecognizer.locationInView(panRecognizer.view))
     
     }
