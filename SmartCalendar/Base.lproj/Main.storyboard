@@ -108,7 +108,7 @@
                                     <rect key="frame" x="165" y="394" width="195" height="21"/>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zT-Vk-MoD" userLabel="Model View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zT-Vk-MoD" userLabel="Model View" customClass="SCCalendarModelView" customModule="SmartCalendar" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lot Of Work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viS-ef-ALn">
@@ -205,6 +205,7 @@
                         <outlet property="backToRootView" destination="cke-97-v5C" id="OtZ-AM-CSu"/>
                         <outlet property="calendarView" destination="OwJ-6I-jgj" id="6Pt-BM-hCa"/>
                         <outlet property="menuView" destination="ZOb-6p-bDL" id="6Sn-Yl-4He"/>
+                        <outlet property="modelView" destination="3zT-Vk-MoD" id="vS2-3S-dZN"/>
                         <outlet property="monthLabel" destination="53I-MZ-1Lq" id="7yu-9j-IQH"/>
                         <outlet property="panRecognizer" destination="uPD-Ww-JVk" id="k3Q-Fr-ZYu"/>
                     </connections>

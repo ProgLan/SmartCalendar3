@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class SCCalendarModelContentViewController: UIViewController {
+public final class SCCalendarModelContentViewController: UIViewController{
 
     @IBOutlet weak var backToRootView: UIBarButtonItem!
 
@@ -20,8 +20,12 @@ public final class SCCalendarModelContentViewController: UIViewController {
     
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!
     
+    @IBOutlet weak var modelView: SCCalendarModelView!
+    
+    
     var shouldShowDaysOut = true
     var animationFinished = true
+    
     
     
     
@@ -34,7 +38,7 @@ public final class SCCalendarModelContentViewController: UIViewController {
         
         monthLabel.text = SCDate(date: NSDate()).globalDescription
         
-    
+        
     }
     
     override public func viewDidLayoutSubviews() {
@@ -51,16 +55,12 @@ public final class SCCalendarModelContentViewController: UIViewController {
     
     
     @IBAction func displayGestureForPanRecognizer(recognizer:UIPanGestureRecognizer) {
-//        let translation = recognizer.translationInView(self.view)
-//        if let view = recognizer.view {
-//            view.center = CGPoint(x:view.center.x + translation.x,
-//                y:view.center.y + translation.y)
-//        }
-//        recognizer.setTranslation(CGPointZero, inView: self.view)
-//        print("panned")
-        let location: CGPoint = recognizer.locationInView(recognizer.view)
         
+        let location: CGPoint = recognizer.locationInView(recognizer.view)
+        //print(location.x + location.y)
         self.drawWorkLoadGraph(location, recognizerState: recognizer.state)
+        
+        modelView.drawCircle(panRecognizer.locationInView(panRecognizer.view))
     
     }
     
@@ -70,7 +70,19 @@ extension SCCalendarModelContentViewController{
     public func drawWorkLoadGraph(location: CGPoint, recognizerState: UIGestureRecognizerState){
         //print("panned")
     
+        //startdate component
+        //startDay
+        //enddate component
+        //endday
+        //numDatesSelected = endDay - startDay + 1
+        //currentDate
+        
+        
     }
+    
+    
+    
+    
 
 }
     
