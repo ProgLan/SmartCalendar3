@@ -149,6 +149,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.94146738240593353" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="viS-ef-ALn"/>
@@ -166,6 +167,9 @@
                                         <include reference="Qfc-Z9-Gp0"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="uPD-Ww-JVk" appends="YES" id="h4a-Ix-GUh"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -202,11 +206,16 @@
                         <outlet property="calendarView" destination="OwJ-6I-jgj" id="6Pt-BM-hCa"/>
                         <outlet property="menuView" destination="ZOb-6p-bDL" id="6Sn-Yl-4He"/>
                         <outlet property="monthLabel" destination="53I-MZ-1Lq" id="7yu-9j-IQH"/>
+                        <outlet property="panRecognizer" destination="uPD-Ww-JVk" id="k3Q-Fr-ZYu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y5d-Uy-ToN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Hwm-rS-kza"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="uPD-Ww-JVk"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="uPD-Ww-JVk">
+                    <connections>
+                        <action selector="displayGestureForPanRecognizer:" destination="zmt-dE-f2B" id="o9l-MU-bFz"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5551.5" y="-439"/>
         </scene>
@@ -391,6 +400,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDD-pt-YbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2997" y="-439"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="r8T-yP-ZPN">
+            <objects>
+                <viewController id="SNh-Yc-eKH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m7r-QR-FoB"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Iq-QB-B8V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l1E-eM-2nI">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ob8-X7-eH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

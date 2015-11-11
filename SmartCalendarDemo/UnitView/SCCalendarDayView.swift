@@ -23,6 +23,14 @@ public final class SCCalendarDayView: UIView {
     public var isOut = false
     public var isCurrentDay = false
     
+    //TODO workload = Sum(time of all events in this day view's event list)
+    public var workLoad:CGFloat!
+    //TODO the time the new event distributed into this day
+    public var additionWorkLoad:CGFloat!
+    
+    
+    
+    
     public weak var monthView: SCCalendarMonthView! {
         get {
             var monthView: MonthView!
@@ -67,6 +75,9 @@ public final class SCCalendarDayView: UIView {
     public init(weekView: SCCalendarWeekView, weekdayIndex: Int) {
         self.weekView = weekView
         self.weekdayIndex = weekdayIndex
+        //TODO, change random workload to daily workload
+        self.workLoad = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        
         
         if let size = weekView.calendarView.dayViewSize {
             let hSpace = weekView.calendarView.appearance.spaceBetweenDayViews!
@@ -143,6 +154,9 @@ public final class SCCalendarDayView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    
 }
 
 // MARK: - Subviews setup
@@ -283,15 +297,30 @@ extension SCCalendarDayView {
                         break
                     }
                     
+                    //original workload
                     let dotMarker = SCAuxiliaryView(dayView: self, rect: markerFrame,
                         //TODO, change from circle to Rect
-                        shape: .Rect)
+                        shape: .Rect, additionalYCoordinator: 0)
                     dotMarker.fillColor = color
                     dotMarker.center = CGPointMake(x, y)
                     insertSubview(dotMarker, atIndex: 0)
                     
                     dotMarker.setNeedsDisplay()
                     dotMarkers.append(dotMarker)
+                    
+                    
+                    //additional workload
+                    let dotMarker2 = SCAuxiliaryView(dayView: self, rect: markerFrame,
+                        //TODO, change from circle to Rect
+                        //TODO:addtionalYCoordinator is the time of new event distributed into today
+                        shape: .Rect, additionalYCoordinator: 5)
+                    dotMarker2.fillColor = color
+                    dotMarker2.center = CGPointMake(x, y)
+                    insertSubview(dotMarker2, atIndex: 0)
+                    
+                    dotMarker.setNeedsDisplay()
+                    dotMarkers.append(dotMarker2)
+
                 }
                 
                 let coordinator = calendarView.coordinator
@@ -454,7 +483,7 @@ extension SCCalendarDayView {
         if let circleView = circleView where circleView.frame != dayLabel.bounds {
             circleView.frame = dayLabel.bounds
         } else {
-            circleView = SCAuxiliaryView(dayView: self, rect: dayLabel.bounds, shape: shape)
+            circleView = SCAuxiliaryView(dayView: self, rect: dayLabel.bounds, shape: shape, additionalYCoordinator:0)
         }
         
         circleView!.fillColor = backgroundColor

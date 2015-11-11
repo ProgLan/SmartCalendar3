@@ -10,6 +10,12 @@ import UIKit
 
 public final class SCAuxiliaryView: UIView {
     public var shape: SCShape!
+    public var test: CGFloat!
+//    public var xcoordinate: CGFloat!
+    public var additionalYCoordinator: CGFloat!
+    
+    //test = CGFloat(Float(arc4random()) / Float(UINT32_MAX));
+    
     public var strokeColor: UIColor! {
         didSet {
             setNeedsDisplay()
@@ -32,10 +38,13 @@ public final class SCAuxiliaryView: UIView {
     
     public unowned let dayView: DayView
     
-    public init(dayView: DayView, rect: CGRect, shape: SCShape) {
+    public init(dayView: DayView, rect: CGRect, shape: SCShape, additionalYCoordinator: CGFloat) {
         self.dayView = dayView
         self.shape = shape
         super.init(frame: rect)
+        self.additionalYCoordinator = additionalYCoordinator
+//        self.xcoordinate = xcoordinate
+//        self.ycoordinate = ycoordinate
         strokeColor = UIColor.clearColor()
         fillColor = UIColor.colorFromCode(0xe74c3c)
         
@@ -77,13 +86,20 @@ public final class SCAuxiliaryView: UIView {
     //TODO, pass in rect height
     public override func drawRect(rect: CGRect) {
         var path: UIBezierPath!
+        //var path2:UIBezierPath!
+        //let workLoad: CGFloat!
         
+        //TODO
+        //workLoad = self.dayView.workLoad
+        //workLoad = CGFloat(arc4random());
+        
+        //draw origin workload
         if let shape = shape {
             switch shape {
             case .RightFlag: path = rightFlagPath()
             case .LeftFlag: path = leftFlagPath()
             case .Circle: path = circlePath()
-            case .Rect: path = rectPath()
+            case .Rect: path = rectPath((self.dayView.workLoad!), xcoordinate: (0 - dayView.calendarView.appearance.spaceBetweenDayViews!), ycoordinate:(bounds.height / 3 - radius))
             }
         }
         
@@ -95,6 +111,10 @@ public final class SCAuxiliaryView: UIView {
             path.stroke()
             path.fill()
         }
+        
+        //TODO
+        //draw addtional workLoad
+        
     }
 
     
@@ -155,19 +175,22 @@ extension SCAuxiliaryView {
     }
     
     //TODO, add parameter when draw rectPath
-    func rectPath() -> UIBezierPath {
+    func rectPath(workLoad: CGFloat, xcoordinate: CGFloat, ycoordinate: CGFloat) -> UIBezierPath {
         //        let midX = bounds.width / 2
-        let midY = bounds.height / 2
+        let midY = bounds.height / 3
         
         let appearance = dayView.calendarView.appearance
         let offset = appearance.spaceBetweenDayViews!
         
         print("offset = \(offset)")
         
-        let path = UIBezierPath(rect: CGRectMake(0 - offset, midY - radius, bounds.width + offset / 2, radius * 2))
+        let path = UIBezierPath(rect: CGRectMake(xcoordinate, ycoordinate + self.additionalYCoordinator, bounds.width + offset / 2, workLoad))
+        //let path = UIBezierPath(rect: CGRectMake(0 - offset, midY - radius, bounds.width + offset / 2, radius*2))
         
         return path
     }
+    
+
 
     
 //    //TODO, add parameter when draw rectPath

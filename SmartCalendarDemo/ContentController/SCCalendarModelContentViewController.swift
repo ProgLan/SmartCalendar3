@@ -18,6 +18,8 @@ public final class SCCalendarModelContentViewController: UIViewController {
     
     @IBOutlet weak var monthLabel: UILabel!
     
+    @IBOutlet var panRecognizer: UIPanGestureRecognizer!
+    
     var shouldShowDaysOut = true
     var animationFinished = true
     
@@ -31,6 +33,8 @@ public final class SCCalendarModelContentViewController: UIViewController {
         super.viewDidLoad()
         
         monthLabel.text = SCDate(date: NSDate()).globalDescription
+        
+    
     }
     
     override public func viewDidLayoutSubviews() {
@@ -46,7 +50,28 @@ public final class SCCalendarModelContentViewController: UIViewController {
     }
     
     
+    @IBAction func displayGestureForPanRecognizer(recognizer:UIPanGestureRecognizer) {
+//        let translation = recognizer.translationInView(self.view)
+//        if let view = recognizer.view {
+//            view.center = CGPoint(x:view.center.x + translation.x,
+//                y:view.center.y + translation.y)
+//        }
+//        recognizer.setTranslation(CGPointZero, inView: self.view)
+//        print("panned")
+        let location: CGPoint = recognizer.locationInView(recognizer.view)
+        
+        self.drawWorkLoadGraph(location, recognizerState: recognizer.state)
     
+    }
+    
+}
+
+extension SCCalendarModelContentViewController{
+    public func drawWorkLoadGraph(location: CGPoint, recognizerState: UIGestureRecognizerState){
+        //print("panned")
+    
+    }
+
 }
     
 
@@ -125,29 +150,25 @@ extension SCCalendarModelContentViewController: SCCalendarViewDelegate, SCCalend
     }
     
     public func dotMarker(shouldShowOnDayView dayView: SCCalendarDayView) -> Bool {
-        let day = dayView.date.day
-        let randomDay = Int(arc4random_uniform(31))
-        if day == randomDay {
-            return true
-        }
-        
-        return false
+//        let day = dayView.date.day
+//        let randomDay = Int(arc4random_uniform(31))
+        return true
     }
     
     public func dotMarker(colorOnDayView dayView: SCCalendarDayView) -> [UIColor] {
         
-        let red = CGFloat(arc4random_uniform(600) / 255)
-        let green = CGFloat(arc4random_uniform(600) / 255)
-        let blue = CGFloat(arc4random_uniform(600) / 255)
+        let red = CGFloat(255)
+        let green = CGFloat(0)
+        let blue = CGFloat(0)
         
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
         
-        let numberOfDots = Int(arc4random_uniform(3) + 1)
+        let numberOfDots = Int(1)
         switch(numberOfDots) {
-        case 2:
-            return [color, color]
-        case 3:
-            return [color, color, color]
+//        case 2:
+//            return [color, color]
+//        case 3:
+//            return [color, color, color]
         default:
             return [color] // return 1 dot
         }

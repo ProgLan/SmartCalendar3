@@ -128,8 +128,8 @@ extension ViewController: SCCalendarViewDelegate, SCCalendarMenuViewDelegate {
     func dotMarker(colorOnDayView dayView: SCCalendarDayView) -> [UIColor] {
         
         let red = CGFloat(255)
-        let green = CGFloat(0)
-        let blue = CGFloat(0)
+        let green = CGFloat(255)
+        let blue = CGFloat(255)
         
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
         
