@@ -39,6 +39,8 @@ public final class SCCalendarModelContentViewController: UIViewController{
 	
 	var dayViewList = [DayView]()
     
+    
+    
 //    @IBAction func testBtn(sender: AnyObject) {
 //        let sd: NSDateComponents = NSDateComponents()
 //        let ed: NSDateComponents = NSDateComponents()
@@ -76,37 +78,36 @@ public final class SCCalendarModelContentViewController: UIViewController{
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        //TODO, inital selected day
-        print("selected day's day: ", self.selectedDay.date.day)
+        
         
         monthLabel.text = SCDate(date: NSDate()).globalDescription
         
         //TODO TEST
-        let sd: NSDateComponents = NSDateComponents()
-        let ed: NSDateComponents = NSDateComponents()
-        let cd: NSDate = NSDate()
-        let recognizer: UIPanGestureRecognizer = self.panRecognizer
-        let location: CGPoint = recognizer.locationInView(recognizer.view)
-        
-        sd.year = 2015
-        sd.month = 11
-        sd.day = 15
-        
-        ed.year = 2015
-        ed.month = 11
-        ed.day = 18
-        
-        //self.selectedDay.date.setDate(cd)
-        
-        drawWorkLoadGraph(location, recognizerState: recognizer.state, startDate: sd, endDate: ed, currentDate: cd)
-        
-        
-        
-        for var i = 0; i < self.selectedDates.count; ++i {
-            
-            print("date: ",self.selectedDates[i])
-            
-        }
+//        let sd: NSDateComponents = NSDateComponents()
+//        let ed: NSDateComponents = NSDateComponents()
+//        let cd: NSDate = NSDate()
+//        let recognizer: UIPanGestureRecognizer = self.panRecognizer
+//        let location: CGPoint = recognizer.locationInView(recognizer.view)
+//        
+//        sd.year = 2015
+//        sd.month = 11
+//        sd.day = 15
+//        
+//        ed.year = 2015
+//        ed.month = 11
+//        ed.day = 18
+//        
+//        //self.selectedDay.date.setDate(cd)
+//        
+//        drawWorkLoadGraph(location, recognizerState: recognizer.state, startDate: sd, endDate: ed, currentDate: cd)
+//        
+//        
+//        
+//        for var i = 0; i < self.selectedDates.count; ++i {
+//            
+//            print("date: ",self.selectedDates[i])
+//            
+//        }
 		
         //TODO
 //        for weeks in selectedDay.weekView.monthView.weekViews{
@@ -150,7 +151,28 @@ public final class SCCalendarModelContentViewController: UIViewController{
         
         if((location.x > 0 && (location.x < modelVW.size.width) && (location.y < modelVW.size.height) && (location.y > 0)))
         {
+            
+            print("list count: ", self.dayViewList.count)
+            
+            //self.selectlist.dayview.addtionalWorkload = location.y
+            //set all selectlist.dayview. isSelect is true
+            for var i = 0; i < self.dayViewList.count;++i{
+                self.dayViewList[i].isSelected = true
+                //print(self.dayViewList[i].isSelected)
+                //TODO
+                self.dayViewList[i].additionWorkLoad = location.y
+                //print(self.dayViewList[i].additionWorkLoad)
+                //print(self.dayViewList[i] == nil)
+                //self.calendarView.reloadInputViews()
+                self.dayViewList[i].reloadContent()
+                //self.dayViewList[i].reloadContent(location.y)
+                //self.dayViewList[i].setupDotMarker(location.y)
+                
+            }
             modelView.drawCircle(panRecognizer.locationInView(panRecognizer.view))
+            
+            
+            
             
             print("lcoaiton x : ", location.x)
             print("location y : ", location.y)

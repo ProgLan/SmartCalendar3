@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		if (segue.identifier == "goToTaskEditViewSegue") {
 			let addEventViewController = segue.destinationViewController as! SCTaskEditContentViewController
 			addEventViewController.selectedDay = self.selectedDay
-			addEventViewController.calendarView = self.calendarView
+			
 		}
 	}
     

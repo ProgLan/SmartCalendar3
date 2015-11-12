@@ -198,6 +198,7 @@ extension SCCalendarWeekView {
                 let hSpace = calendarView.appearance.spaceBetweenDayViews!
                 let x = CGFloat(index) * CGFloat(size.width + hSpace) + hSpace/2
                 dayView.frame = CGRectMake(x, 0, size.width, size.height)
+                //TODO
                 dayView.reloadContent()
             }
         }

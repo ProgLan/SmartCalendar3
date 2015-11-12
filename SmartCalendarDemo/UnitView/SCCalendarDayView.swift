@@ -38,7 +38,7 @@ public final class SCCalendarDayView: UIView {
     
     
     //TODO: if this day has been selected by a task
-    public var isSelected = false
+    public var isSelected = true
     
     
     
@@ -287,14 +287,16 @@ extension SCCalendarDayView {
     }
     
     public func setupDotMarker() {
-        for (index, dotMarker) in dotMarkers.enumerate() {
-            dotMarker!.removeFromSuperview()
-            dotMarkers[index] = nil
-        }
+//        for (index, dotMarker) in dotMarkers.enumerate() {
+//            dotMarker!.removeFromSuperview()
+//            dotMarkers[index] = nil
+//        }
         
         if let delegate = calendarView.delegate {
             //display rect in all dates
             if self.isSelected == true {
+                
+                print("selected date", self.date.commonDescription)
                 
                 var (width, height): (CGFloat, CGFloat) = (13, 13)
                 if let size = delegate.dotMarker?(sizeOnDayView: self) {
@@ -340,6 +342,15 @@ extension SCCalendarDayView {
                     dotMarker.setNeedsDisplay()
                     dotMarkers.append(dotMarker)
                     
+                    var addtionalYCoordinator: CGFloat = 0.0
+                    
+                    if(self.additionWorkLoad == nil){
+                         addtionalYCoordinator = 0.0
+                    }else{
+                        addtionalYCoordinator = self.additionWorkLoad
+                    }
+                    
+                    print("addtionalYCoordinator", addtionalYCoordinator)
                     
                     //additional workload
                     let dotMarker2 = SCAuxiliaryView(dayView: self, rect: markerFrame,

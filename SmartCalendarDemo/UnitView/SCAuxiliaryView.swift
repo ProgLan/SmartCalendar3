@@ -184,7 +184,17 @@ extension SCAuxiliaryView {
         
         //print("offset = \(offset)")
         
-        let path = UIBezierPath(rect: CGRectMake(xcoordinate, ycoordinate + self.additionalYCoordinator, bounds.width + offset / 2, workLoad))
+        var additionalWorkHeight: CGFloat = 0.0
+        
+        if(self.dayView.additionWorkLoad == nil){
+            additionalWorkHeight = 0.0
+        }else{
+            additionalWorkHeight = self.dayView.additionWorkLoad
+        }
+        
+        
+        //TODO
+        let path = UIBezierPath(rect: CGRectMake(xcoordinate, ycoordinate + self.additionalYCoordinator, bounds.width + offset / 2, workLoad + CGFloat(Float(arc4random()) / Float(UINT32_MAX))))
         //let path = UIBezierPath(rect: CGRectMake(0 - offset, midY - radius, bounds.width + offset / 2, radius*2))
         
         return path
