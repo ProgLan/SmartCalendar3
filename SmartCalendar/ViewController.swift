@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import EventKit
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     // MARK: - Properties
     @IBOutlet weak var calendarView: SCCalendarView!
     @IBOutlet weak var menuView: SCCalendarMenuView!
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
     var animationFinished = true
 	
 	var selectedDay: DayView!
-	
+	var eventListForTheDay = [EKEvent]()
     
     // MARK: - Life cycle
     
@@ -29,9 +30,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 		
         monthLabel.text = SCDate(date: NSDate()).globalDescription
-		//tableView.reloadData()
+
     }
-    
+	
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 		
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
 		if (segue.identifier == "goToTaskEditViewSegue") {
 			let addEventViewController = segue.destinationViewController as! SCTaskEditContentViewController
 			addEventViewController.selectedDay = self.selectedDay
+			addEventViewController.calendarView = self.calendarView
 		}
 	}
     
@@ -50,7 +52,24 @@ class ViewController: UIViewController {
         self.performSegueWithIdentifier("goToTaskEditViewSegue", sender: self)
     }
 	
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
 	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return eventListForTheDay.count
+	}
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		
+		let cell = tableView.dequeueReusableCellWithIdentifier("EventTableViewCell", forIndexPath: indexPath)
+		
+		let event = eventListForTheDay[indexPath.row]
+		cell.textLabel!.text = event.title
+		print(event.title)
+		
+		return cell
+	}
 	
 }
 
@@ -85,7 +104,8 @@ extension ViewController: SCCalendarViewDelegate, SCCalendarMenuViewDelegate {
     func didSelectDayView(dayView: SCCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
 		selectedDay = dayView
-		print(dayView.eventList.count)
+		eventListForTheDay = selectedDay.eventList
+		tableView.reloadData()
     }
     
     func presentedDateUpdated(date: SCDate) {

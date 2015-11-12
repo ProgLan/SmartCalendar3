@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 public typealias ModelContentViewController = SCCalendarModelContentViewController
 
@@ -28,7 +29,7 @@ public final class SCCalendarDayView: UIView {
     public var isOut = false
     public var isCurrentDay = false
 	
-	public var eventList = [AnyObject]()
+	public var eventList = [EKEvent]()
     
     //TODO workload = Sum(time of all events in this day view's event list)
     public var workLoad:CGFloat!
