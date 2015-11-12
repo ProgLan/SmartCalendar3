@@ -36,6 +36,8 @@ public final class SCCalendarModelContentViewController: UIViewController{
     var selectedDay: DayView!
     
     var currentMonthDays = [NSDate]()
+	
+	var dayViewList = [DayView]()
     
 //    @IBAction func testBtn(sender: AnyObject) {
 //        let sd: NSDateComponents = NSDateComponents()

@@ -18,7 +18,7 @@ public class SCTaskEditContentViewController: UIViewController{
 	@IBOutlet weak var endDate: UIDatePicker!
 	
 	var selectedDay: DayView!
-	var calendarView: SCCalendarView!
+	var dayViewList = [DayView]()
 	
 	let eventStore = EKEventStore();
 	let calendar = NSCalendar.currentCalendar()
@@ -37,7 +37,7 @@ public class SCTaskEditContentViewController: UIViewController{
         if (segue.identifier == "goToModelViewSegue") {
             let modelViewController = segue.destinationViewController as! SCCalendarModelContentViewController
             modelViewController.selectedDay = self.selectedDay
-            //modelViewController.calendarView = self.calendarView
+			modelViewController.dayViewList = self.dayViewList
         }
     }
 
@@ -63,6 +63,7 @@ outerloop:	for weeks in selectedDay.weekView.monthView.weekViews {
 					let day = convertDate(days.date.getDate()!)
 					if (start <= day && day <= end) {
 						self.createEvent(days, eventStore: self.eventStore, title: self.eventTitle.text!)
+						dayViewList.append(days)
 					}
 				}
 			}
