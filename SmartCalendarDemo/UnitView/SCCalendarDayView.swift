@@ -133,6 +133,8 @@ public final class SCCalendarDayView: UIView {
     
     
     
+    
+    
     public func dateWithWeekView(weekView: SCCalendarWeekView, andWeekIndex index: Int) -> SCDate {
         func hasDayAtWeekdayIndex(weekdayIndex: Int, weekdaysDictionary: [Int : [Int]]) -> Bool {
             for key in weekdaysDictionary.keys {

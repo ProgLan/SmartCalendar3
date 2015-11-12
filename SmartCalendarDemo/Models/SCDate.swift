@@ -9,7 +9,7 @@
 import UIKit
 
 public final class SCDate: NSObject {
-    private let date: NSDate
+    private var date: NSDate
     
     public let year: Int
     public let month: Int
@@ -47,6 +47,10 @@ public final class SCDate: NSObject {
 extension SCDate{
     public func getDate() -> NSDate?{
         return self.date
+    }
+    
+    public func setDate(date: NSDate){
+        self.date = date
     }
 }
 

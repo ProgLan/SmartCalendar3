@@ -75,7 +75,7 @@ public final class SCCalendarModelContentViewController: UIViewController{
         super.viewDidLoad()
         
         //TODO, inital selected day
-        
+        print("selected day's day: ", self.selectedDay.date.day)
         
         monthLabel.text = SCDate(date: NSDate()).globalDescription
         
@@ -94,6 +94,8 @@ public final class SCCalendarModelContentViewController: UIViewController{
         ed.month = 11
         ed.day = 18
         
+        //self.selectedDay.date.setDate(cd)
+        
         drawWorkLoadGraph(location, recognizerState: recognizer.state, startDate: sd, endDate: ed, currentDate: cd)
         
         
@@ -104,15 +106,16 @@ public final class SCCalendarModelContentViewController: UIViewController{
             
         }
         
-        for weeks in selectedDay.weekView.monthView.weekViews{
-            for day in weeks.dayViews{
-                for selectedDate in self.selectedDates{
-                    if((day.date.getDate()?.isEqualToDate(selectedDate)) != nil){
-                        day.isSelected = true
-                    }
-                }
-            }
-        }
+        //TODO
+//        for weeks in selectedDay.weekView.monthView.weekViews{
+//            for day in weeks.dayViews{
+//                for selectedDate in self.selectedDates{
+//                    if((day.date.getDate()?.isEqualToDate(selectedDate)) != nil){
+//                        day.isSelected = true
+//                    }
+//                }
+//            }
+//        }
         
         
         //find this calendar view's all dates
@@ -183,8 +186,49 @@ extension SCCalendarModelContentViewController{
         
         self.selectedDates = self.populateSelectedDates(currentDate, numDatesSelected: numDatesSelected)
         
+//        var numHoursAvailable: CGFloat = CGFloat(numDatesSelected) * 8.0
+//        //two weeks of workload is maximum
+//        let maxHours = CGFloat(8.0 * 14.0)
+//        let maxY = self.modelView.frame.height
+//        let minY = 0.0
+//        let yRange = CGFloat(maxY) - CGFloat(minY)
+//        
+//        let workload = self.calculateWorkLoad(location, maxY: maxY, yRange: yRange, maxHours:maxHours)
+//        
+//        let transformingScale = workload / numHoursAvailable
+//        
+//        
+//        let xStart = 0.0
+//        let xEnd = self.modelView.frame.width
+//        let yStart = maxY
+//        let xRange = CGFloat(xEnd) - CGFloat(xStart)
+//        
+//        var bezierLocation = location
+//        bezierLocation.y = CGFloat(minY)
+//        
+//        let tickInterval = CGFloat(xRange) / CGFloat(numDatesSelected)
+//        
+//        let origin: CGPoint = CGPointMake(CGFloat(xStart), yStart)
+//        let endpt: CGPoint = CGPointMake(xEnd, yStart)
+//        let midpt1: CGPoint = self.midPointForPoints(origin, p2: bezierLocation)
+//        let midpt2: CGPoint = self.midPointForPoints(bezierLocation, p2: endpt)
+//        
+//        let ctrlpt1: CGPoint = CGPointMake(midpt1.x, midpt1.y + 50)
+//        let ctrlpt2: CGPoint = CGPointMake(midpt2.x, midpt2.y + 50)
         
         
+        
+        //path.moveToPoint(origin)
+        
+        
+        
+        
+        
+    }
+    
+    
+    public func midPointForPoints(var p1: CGPoint, var p2: CGPoint) -> CGPoint{
+        return CGPointMake((p1.x + p2.x)/2, (p1.y + p2.y)/2)
     }
     
     
@@ -198,36 +242,30 @@ extension SCCalendarModelContentViewController{
         for var i = 0; i < numDatesSelected; ++i {
             
             selectedDatesArray.append(currentDate)
-            
             let aDayDiff: NSDateComponents = NSDateComponents()
-            
             aDayDiff.day = 1
-            
             var aDayAfter: NSDate = NSDate()
-            
             aDayAfter = NSCalendar.currentCalendar().dateByAddingComponents(aDayDiff, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
-            
+        
             currentDate = aDayAfter
         
         }
         
+        
         return selectedDatesArray
-        
-        
-    
     }
     
-    //TODO: pass in that particular day's maxHours
-    public func calculateWorkLoad(recognizer: UIPanGestureRecognizer, maxHours: CGFloat) -> CGFloat{
-        let location: CGPoint = recognizer.locationInView(recognizer.view)
+    //TODO:
+    public func calculateWorkLoad(location: CGPoint, maxY: CGFloat, yRange: CGFloat, maxHours: CGFloat) -> CGFloat{
+        //let location: CGPoint = recognizer.locationInView(recognizer.view)
         let workload: CGFloat
         
-        if(location.y > self.modelView.frame.height){
+        if(location.y > maxY){
             workload = 0.0
             return workload
         }
         
-        workload = (self.modelView.frame.height - location.y) / self.modelView.frame.height * maxHours
+        workload = (maxY - location.y) / yRange * maxHours
         
         return workload
     }

@@ -31,6 +31,15 @@ public class SCTaskEditContentViewController: UIViewController{
 		day.eventList.append(event)
 		
 	}
+    
+    //TODO:
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "goToModelViewSegue") {
+            let modelViewController = segue.destinationViewController as! SCCalendarModelContentViewController
+            modelViewController.selectedDay = self.selectedDay
+            //modelViewController.calendarView = self.calendarView
+        }
+    }
 
 	@IBAction func testEvent(sender: UIButton) {
 		if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
