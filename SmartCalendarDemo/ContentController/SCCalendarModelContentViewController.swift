@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 public final class SCCalendarModelContentViewController: UIViewController{
 
@@ -23,10 +24,47 @@ public final class SCCalendarModelContentViewController: UIViewController{
     @IBOutlet weak var modelView: SCCalendarModelView!
     
     
+    
     var shouldShowDaysOut = true
+    
+    
     var animationFinished = true
     
+    //TODO, test if the selected dates have passed into selectedDates array
+    var selectedDates = [NSDate]()
     
+    var selectedDay: DayView!
+    
+    var currentMonthDays = [NSDate]()
+    
+//    @IBAction func testBtn(sender: AnyObject) {
+//        let sd: NSDateComponents = NSDateComponents()
+//        let ed: NSDateComponents = NSDateComponents()
+//        let cd: NSDate = NSDate()
+//        let recognizer: UIPanGestureRecognizer = self.panRecognizer
+//        let location: CGPoint = recognizer.locationInView(recognizer.view)
+//        
+//        sd.year = 2015
+//        sd.month = 11
+//        sd.day = 15
+//        
+//        ed.year = 2015
+//        ed.month = 11
+//        ed.day = 18
+//        
+//        drawWorkLoadGraph(location, recognizerState: recognizer.state, startDate: sd, endDate: ed, currentDate: cd)
+//        
+//        
+//        
+//        for var i = 0; i < self.selectedDates.count; ++i {
+//            
+//            print("date: ",self.selectedDates[i])
+//            
+//        }
+//        
+//       
+//        
+//    }
     
     
     
@@ -36,8 +74,51 @@ public final class SCCalendarModelContentViewController: UIViewController{
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO, inital selected day
+        
+        
         monthLabel.text = SCDate(date: NSDate()).globalDescription
         
+        //TODO TEST
+        let sd: NSDateComponents = NSDateComponents()
+        let ed: NSDateComponents = NSDateComponents()
+        let cd: NSDate = NSDate()
+        let recognizer: UIPanGestureRecognizer = self.panRecognizer
+        let location: CGPoint = recognizer.locationInView(recognizer.view)
+        
+        sd.year = 2015
+        sd.month = 11
+        sd.day = 15
+        
+        ed.year = 2015
+        ed.month = 11
+        ed.day = 18
+        
+        drawWorkLoadGraph(location, recognizerState: recognizer.state, startDate: sd, endDate: ed, currentDate: cd)
+        
+        
+        
+        for var i = 0; i < self.selectedDates.count; ++i {
+            
+            print("date: ",self.selectedDates[i])
+            
+        }
+        
+        for weeks in selectedDay.weekView.monthView.weekViews{
+            for day in weeks.dayViews{
+                for selectedDate in self.selectedDates{
+                    if((day.date.getDate()?.isEqualToDate(selectedDate)) != nil){
+                        day.isSelected = true
+                    }
+                }
+            }
+        }
+        
+        
+        //find this calendar view's all dates
+        //compare it to the selectedDate
+        //if is in the selectedDate, then make it selected == true
+        print(self.calendarView)
         
     }
     
@@ -54,14 +135,13 @@ public final class SCCalendarModelContentViewController: UIViewController{
     }
     
     
-    @IBAction func displayGestureForPanRecognizer(recognizer:UIPanGestureRecognizer) {
+    @IBAction func displayGestureForPanRecognizer(recognizer:UIPanGestureRecognizer){
         
-        var location: CGPoint = recognizer.locationInView(recognizer.view)
+        let location: CGPoint = recognizer.locationInView(recognizer.view)
         //print(location.x + location.y)
-        self.drawWorkLoadGraph(location, recognizerState: recognizer.state)
+        //self.drawWorkLoadGraph(location, recognizerState: recognizer.state)
         
         let modelVW: CGRect = self.modelView.frame
-        let rec: CGRect = (recognizer.view?.frame)!
         
         if((location.x > 0 && (location.x < modelVW.size.width) && (location.y < modelVW.size.height) && (location.y > 0)))
         {
@@ -74,10 +154,10 @@ public final class SCCalendarModelContentViewController: UIViewController{
             print("modelView size heigh : ", modelVW.size.height)
             print("modelView size width : ", modelVW.size.width)
             print("outside")
-//            let translation : CGPoint = recognizer.translationInView(recognizer.view?.superview)
-//            location = translation
-//            recognizer.view?.center = CGPointMake(recognizer.view!.center.x + translation.x, recognizer.view!.center.y + translation.y)
-//            recognizer.setTranslation(CGPointZero, inView: recognizer.view?.superview)
+            
+            
+            
+            
         }
         
     
@@ -86,7 +166,7 @@ public final class SCCalendarModelContentViewController: UIViewController{
 }
 
 extension SCCalendarModelContentViewController{
-    public func drawWorkLoadGraph(location: CGPoint, recognizerState: UIGestureRecognizerState){
+    public func drawWorkLoadGraph(location: CGPoint, recognizerState: UIGestureRecognizerState, startDate: NSDateComponents, endDate: NSDateComponents, currentDate: NSDate){
         //print("panned")
     
         //startdate component
@@ -96,7 +176,60 @@ extension SCCalendarModelContentViewController{
         //numDatesSelected = endDay - startDay + 1
         //currentDate
         
+        let startDay: NSInteger = startDate.day
+        let endDay: NSInteger = endDate.day
+        let numDatesSelected: NSInteger = endDay - startDay + 1
         
+        
+        self.selectedDates = self.populateSelectedDates(currentDate, numDatesSelected: numDatesSelected)
+        
+        
+        
+    }
+    
+    
+    //MARK: add a series of day to an array
+    public func populateSelectedDates(var currentDate: NSDate, numDatesSelected: NSInteger) -> [NSDate]{
+    
+        
+        var selectedDatesArray = [NSDate]()
+        
+        
+        for var i = 0; i < numDatesSelected; ++i {
+            
+            selectedDatesArray.append(currentDate)
+            
+            let aDayDiff: NSDateComponents = NSDateComponents()
+            
+            aDayDiff.day = 1
+            
+            var aDayAfter: NSDate = NSDate()
+            
+            aDayAfter = NSCalendar.currentCalendar().dateByAddingComponents(aDayDiff, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
+            
+            currentDate = aDayAfter
+        
+        }
+        
+        return selectedDatesArray
+        
+        
+    
+    }
+    
+    //TODO: pass in that particular day's maxHours
+    public func calculateWorkLoad(recognizer: UIPanGestureRecognizer, maxHours: CGFloat) -> CGFloat{
+        let location: CGPoint = recognizer.locationInView(recognizer.view)
+        let workload: CGFloat
+        
+        if(location.y > self.modelView.frame.height){
+            workload = 0.0
+            return workload
+        }
+        
+        workload = (self.modelView.frame.height - location.y) / self.modelView.frame.height * maxHours
+        
+        return workload
     }
     
     

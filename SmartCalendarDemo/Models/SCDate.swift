@@ -44,6 +44,12 @@ public final class SCDate: NSObject {
     }
 }
 
+extension SCDate{
+    public func getDate() -> NSDate?{
+        return self.date
+    }
+}
+
 extension SCDate {
     public func convertedDate() -> NSDate? {
         let calendar = NSCalendar.currentCalendar()

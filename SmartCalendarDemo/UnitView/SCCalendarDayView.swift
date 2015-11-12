@@ -8,7 +8,12 @@
 
 import UIKit
 
+public typealias ModelContentViewController = SCCalendarModelContentViewController
+
 public final class SCCalendarDayView: UIView {
+    public var ModelContentViewController: SCCalendarModelContentViewController!
+
+    
     // MARK: - Public properties
     public let weekdayIndex: Int!
     public weak var weekView: SCCalendarWeekView!
@@ -29,6 +34,10 @@ public final class SCCalendarDayView: UIView {
     public var workLoad:CGFloat!
     //TODO the time the new event distributed into this day
     public var additionWorkLoad:CGFloat!
+    
+    
+    //TODO: if this day has been selected by a task
+    public var isSelected = false
     
     
     
@@ -103,7 +112,25 @@ public final class SCCalendarDayView: UIView {
         if !calendarView.shouldShowWeekdaysOut && isOut {
             hidden = true
         }
+        
+        //var temp = ModelContentViewController
+        
+        //TODO, check if the selected array is nil
+//        if(ModelContentViewController != nil){
+//            
+//            for var i = 0; i < ModelContentViewController.selectedDates.count; ++i{
+//                let selectDate: NSDate = ModelContentViewController.selectedDates[i]
+//                
+//                if(selectDate.isEqualToDate(self.date.getDate()!)){
+//                    self.isSelected = true
+//                }
+//            }
+//        
+//        }
+        
     }
+    
+    
     
     public func dateWithWeekView(weekView: SCCalendarWeekView, andWeekIndex index: Int) -> SCDate {
         func hasDayAtWeekdayIndex(weekdayIndex: Int, weekdaysDictionary: [Int : [Int]]) -> Bool {
@@ -264,7 +291,7 @@ extension SCCalendarDayView {
         
         if let delegate = calendarView.delegate {
             //display rect in all dates
-            //if let shouldShow = delegate.dotMarker?(shouldShowOnDayView: self) where shouldShow {
+            if self.isSelected == true {
                 
                 var (width, height): (CGFloat, CGFloat) = (13, 13)
                 if let size = delegate.dotMarker?(sizeOnDayView: self) {
@@ -330,7 +357,7 @@ extension SCCalendarDayView {
                     moveDotMarkerBack(false, coloring: false)
                 }
             }
-        //}
+        }
     }
 }
 

@@ -171,6 +171,16 @@
                                     <outletCollection property="gestureRecognizers" destination="uPD-Ww-JVk" appends="YES" id="h4a-Ix-GUh"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyh-8e-v4V">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="test"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="308" y="76" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="testBtn:" destination="zmt-dE-f2B" eventType="touchUpInside" id="twv-K9-5Gd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -181,6 +191,7 @@
                                 <exclude reference="TAo-L2-Dzy"/>
                                 <exclude reference="42R-eg-HhZ"/>
                                 <exclude reference="3zT-Vk-MoD"/>
+                                <exclude reference="pyh-8e-v4V"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -191,6 +202,7 @@
                                 <include reference="TAo-L2-Dzy"/>
                                 <include reference="42R-eg-HhZ"/>
                                 <include reference="3zT-Vk-MoD"/>
+                                <include reference="pyh-8e-v4V"/>
                             </mask>
                         </variation>
                     </view>

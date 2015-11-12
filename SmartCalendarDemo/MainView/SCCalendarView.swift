@@ -39,6 +39,7 @@ public final class SCCalendarView: UIView {
     public var contentController: ContentViewController!
     public var calendarMode: CalendarMode!
     
+    
     public var (weekViewSize, dayViewSize): (CGSize?, CGSize?)
     
     private var validated = false
