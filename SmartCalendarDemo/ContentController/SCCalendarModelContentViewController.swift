@@ -105,7 +105,7 @@ public final class SCCalendarModelContentViewController: UIViewController{
             print("date: ",self.selectedDates[i])
             
         }
-        
+		
         //TODO
 //        for weeks in selectedDay.weekView.monthView.weekViews{
 //            for day in weeks.dayViews{
@@ -116,7 +116,7 @@ public final class SCCalendarModelContentViewController: UIViewController{
 //                }
 //            }
 //        }
-        
+		
         
         //find this calendar view's all dates
         //compare it to the selectedDate

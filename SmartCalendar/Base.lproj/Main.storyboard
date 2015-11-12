@@ -397,7 +397,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="296" width="400" height="30"/>
+                                    <rect key="frame" x="0.0" y="143" width="400" height="30"/>
                                 </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-Cj-dAE">
@@ -410,18 +410,40 @@
                                     <action selector="testEvent:" destination="xG2-iH-K92" eventType="touchUpInside" id="7JQ-BN-uqc"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="S2q-BF-u6o">
+                                <rect key="frame" x="-160" y="-108" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="468991917.967758">
+                                    <!--2015-11-12 03:31:57 +0000-->
+                                </date>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="181" width="400" height="118"/>
+                                </variation>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Z3N-u8-gyp">
+                                <rect key="frame" x="-160" y="-108" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="468991920.94780397">
+                                    <!--2015-11-12 03:32:00 +0000-->
+                                </date>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="307" width="400" height="123"/>
+                                </variation>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="HBY-Tq-sKu"/>
                                 <exclude reference="Uot-Cj-dAE"/>
+                                <exclude reference="S2q-BF-u6o"/>
+                                <exclude reference="Z3N-u8-gyp"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="HBY-Tq-sKu"/>
                                 <include reference="Uot-Cj-dAE"/>
+                                <include reference="S2q-BF-u6o"/>
+                                <include reference="Z3N-u8-gyp"/>
                             </mask>
                         </variation>
                     </view>
@@ -433,8 +455,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="endDate" destination="Z3N-u8-gyp" id="Yqa-sO-LSv"/>
                         <outlet property="eventTitle" destination="HBY-Tq-sKu" id="MvP-l3-yvB"/>
                         <outlet property="goToModelBtn" destination="JXr-FM-xht" id="h2b-bL-uP1"/>
+                        <outlet property="startDate" destination="S2q-BF-u6o" id="Y20-64-wJf"/>
                         <segue destination="zmt-dE-f2B" kind="show" identifier="goToModelViewSegue" id="i6g-ov-k3j"/>
                     </connections>
                 </viewController>

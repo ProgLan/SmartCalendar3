@@ -21,15 +21,15 @@ public class SCTaskEditContentViewController: UIViewController{
 	var calendarView: SCCalendarView!
 	
 	let eventStore = EKEventStore();
+	let calendar = NSCalendar.currentCalendar()
 	
 	func createEvent(day: DayView, eventStore: EKEventStore, title: String) {
 		let event = EKEvent(eventStore: eventStore)
 		event.title = title
-		event.startDate = NSDate();
-		event.endDate = NSDate();
+		event.startDate = startDate.date;
+		event.endDate = endDate.date;
 		//event.calendar = eventStore.defaultCalendarForNewEvents
 		day.eventList.append(event)
-		
 	}
     
     //TODO:
@@ -41,29 +41,35 @@ public class SCTaskEditContentViewController: UIViewController{
         }
     }
 
+	
+	func convertDate(day: NSDate) -> Int {
+		let components = calendar.components([.Year, .Month, .Day], fromDate: day)
+		let month = components.month
+		let day = components.day
+		return month*100 + day
+	}
+	
 	@IBAction func testEvent(sender: UIButton) {
+		let start = convertDate(startDate.date)
+		let end = convertDate(endDate.date)
 		if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
 			eventStore.requestAccessToEntityType(.Event, completion: {
 				granted, error in
 				self.createEvent(self.selectedDay, eventStore: self.eventStore, title: self.eventTitle.text!)
 			})
 		} else {
-			for weeks in selectedDay.weekView.monthView.weekViews {
+outerloop:	for weeks in selectedDay.weekView.monthView.weekViews {
 				for days in weeks.dayViews {
-					self.createEvent(days, eventStore: self.eventStore, title: self.eventTitle.text!)
+					let day = convertDate(days.date.getDate()!)
+					if (start <= day && day <= end) {
+						self.createEvent(days, eventStore: self.eventStore, title: self.eventTitle.text!)
+					}
 				}
 			}
-//			self.createEvent(self.selectedDay, eventStore: self.eventStore, title: self.eventTitle.text!)
 		}
 		
 	}
 	
-//	override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//		if (segue.identifier == "goToModelViewSegue") {
-//			let testViewController = segue.destinationViewController as! TestViewController
-//			testViewController.calendarView = self.calendarView
-//		}
-//	}
 	
     @IBAction func goToModelView(sender: AnyObject) {
         self.performSegueWithIdentifier("goToModelViewSegue", sender: self)
